@@ -1,0 +1,199 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CSS only -->
+<!-- CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> 
+    
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    
+
+
+
+<title>Document</title>
+    
+</head>
+<style>
+    a:hover 
+        { color:rgb(88, 202, 202); }
+.carticon{background: url(static/images/cart-70-32.ico);height: 20px;
+        width: 20px;
+        
+        display: block;
+        background-repeat: no-repeat;
+      }
+.appleicon{background: url(static/images/applelogo.ico);height: 35px;
+        width: 35px;
+        
+        display: block;
+        background-repeat: no-repeat;
+
+}
+        .main_container {
+            background-color: rgb(58, 52, 52);
+        }
+        .my_btn{
+            display: inline;
+            background: transparent;
+            
+            border: none;
+            align-content: center;
+            box-shadow: 0%;
+            font-size: 18px;
+            color: blue;
+        }
+    <!--  -->
+    
+    body {
+    background-color: #eee
+}
+
+.mt-100 {
+    margin-top: 100px
+}
+
+.card {
+    border-radius: 7px !important;
+    border-color: #e1e7ec
+}
+
+.mb-30 {
+    margin-bottom: 30px !important
+}
+
+.card-img-tiles {
+    display: block;
+    border-bottom: 1px solid #e1e7ec
+}
+
+a {
+    color: #0da9ef;
+    text-decoration: none !important
+}
+
+.card-img-tiles>.inner {
+    display: table;
+    width: 100%
+}
+
+.card-img-tiles .main-img,
+.card-img-tiles .thumblist {
+    display: table-cell;
+    width: 65%;
+    padding: 15px;
+    vertical-align: middle
+}
+
+.card-img-tiles .main-img>img:last-child,
+.card-img-tiles .thumblist>img:last-child {
+    margin-bottom: 0
+}
+
+.card-img-tiles .main-img>img,
+.card-img-tiles .thumblist>img {
+    display: block;
+    width: 100%;
+    margin-bottom: 6px
+}
+
+.thumblist {
+    width: 35%;
+    border-left: 1px solid #e1e7ec !important;
+    display: table-cell;
+    width: 65%;
+    padding: 15px;
+    vertical-align: middle
+}
+
+.card-img-tiles .thumblist>img {
+    display: block;
+    width: 100%;
+    margin-bottom: 6px
+}
+
+.btn-group-sm>.btn,
+.btn-sm {
+    padding: .45rem .5rem !important;
+    font-size: .875rem;
+    line-height: 1.5;
+    border-radius: .2rem
+}
+</style>
+<body>
+    <div class="collapse" id="navbarToggleExternalContent" style="font-size: 22px;">
+        <div class="text-white bg-dark" >
+            
+            <ul class="nav " >
+              
+                {% for i in category %}
+            <li class="nav-item ">
+              <a class="nav-link text-white" href="{% url 'product' i.id%}"  >{{i.name}}</a>
+            </li>
+            
+            {%endfor%}
+          </ul>
+          
+         
+        </div>
+        
+        
+      </div>
+      
+      
+      <nav class="navbar navbar-dark bg-dark ">
+        <div class="container-fluid">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            
+          </button>
+         
+          <div class="input-group rounded" style="width: 25%;margin-left: 25%;">
+            <input type="search" class="form-control rounded" placeholder="Search your fav gadget here.." aria-label="Search"
+            aria-describedby="search-addon" />
+            <span class="input-group-text border-0" id="search-addon">
+              <i class="fas fa-search" style="cursor: pointer;"></i>
+            </span>
+        </div>
+          <div ><a href=""><i class="carticon" ></i></a></div>
+        </div>
+      </nav>
+      
+
+     </div>
+    
+
+<!-- main -->
+<div class="container mt-100">
+    <div class="row">
+        {% for i in category %}
+        <div class="col-md-4 col-sm-6">
+            
+            <div class="card mb-30"><a class="card-img-tiles" href="#" data-abc="true">
+                    <div class="inner">
+                        <div class="main-img"><img src="{{i.image.url}}" alt="Category"></div>
+                        <div class="thumblist"><img src="{{i.image.url}}" alt="Category"><img src="{{i.image.url}}" alt="Category"></div>
+                    </div>
+                </a>
+                <div class="card-body text-center">
+                    <h4 class="card-title">{{i.name}}</h4>
+                    <a class="btn btn-outline-primary btn-sm" href="{% url 'product' i.id%}" data-abc="true">View Products</a>
+                </div>
+            </div>
+        </div>
+        {%endfor%}
+        
+        
+<!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+{%block body%}
+{%endblock%}
+</body>
+</html>
